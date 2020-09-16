@@ -7,6 +7,8 @@ import Shop from './Shop'
 import Blog from './Blog'
 import './tailwind.output.css';
 
+const CartCountDisplay = React.createContext(null)
+
 const App = () => (
   <div className = "App">
     <Navbar></Navbar>

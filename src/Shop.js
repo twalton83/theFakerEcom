@@ -1,22 +1,38 @@
 import React, { Component } from 'react'
 import ItemsDisplay from './ItemsDisplay'
 
+import {filterItems} from './helpers'
+
 export default class Shop extends Component {
     constructor(props){
         super(props)
         this.state = {
-            category : "default"
+            category : "default",
+            cart : []
         }
         this.handleCategoryChange = this.handleCategoryChange.bind(this)
-    }
 
+    }
+    generateCards(){
+        let items = filterItems(this.props.category)
+        return items
+        
+    }
     handleCategoryChange = (e) => {
         this.setState({
             category : e.target.value
         })
     }
     
+    addToCart = (item) => {
+        this.setState(state => {
+            const cart = [...this.state.cart, item]
 
+            return {
+                cart
+            }
+        })
+    }
    
     render() {
         return (
@@ -35,7 +51,7 @@ export default class Shop extends Component {
                 </div>
               
 
-                <ItemsDisplay category={this.state.category}/>
+                <ItemsDisplay addToCart = {this.addToCart} items = {filterItems(this.state.category)}/>
             </div>
         )
     }

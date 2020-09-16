@@ -2,14 +2,15 @@
 import data from './data.json'
 
 
-const getItems = () =>{
-   
-    let items = data;
-    return items
-   
+const filterItems = (category) =>{
+    return category === 'default' ? data : data.filter(item =>
+        item.category.includes(category)
+        )
+
 }
 
 const upperCaseName = (string)=> string.split('')[0].toUpperCase() + string.slice(1)
 
 
-export {getItems, upperCaseName}
+
+export {upperCaseName, filterItems}

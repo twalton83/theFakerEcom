@@ -24,11 +24,11 @@ describe('gets requested items', ()=>{
     })
     test('fetches items from specific category', ()=>{
         const test = (category) =>{
-            let arr = getItems().filter(item =>
+            let items = getItems().filter(item =>
                 item.category.includes(category)
                 )
-                console.log(arr)
-                return arr
+                console.log(items)
+                return items
         }
         const meatObj = [{
             "name" : "filet mignon",
